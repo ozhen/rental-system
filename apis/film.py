@@ -8,6 +8,7 @@ client = MongoClient('localhost',
 
 db = client['dvd-rental-system']
 film_colln = db.films
+customer_colln = db.customers
 
 def get_all():
     film_list = []
@@ -24,3 +25,20 @@ def get_all():
         film_list.append(film_info)
 
     return film_list
+
+
+def get_film_history(film_name):
+    customer_list = []
+
+    for customer in customer_colln.find({}):
+        rentals = customer['Rentals']
+
+        for rental in rentals:
+            if film_name in rental['Film Title']:
+                full_name = f"{customer['First Name']} {customer['Last Name']}"
+                customer_list.append(full_name)
+
+    # remove duplicates in customer list
+    return list(set(customer_list))
+
+print(get_film_history('FIREBALL PHILADELPHIA'))
