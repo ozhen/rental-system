@@ -27,7 +27,7 @@ def get_all():
     return film_list
 
 
-def get_film_history(film_name):
+def get_film(film_name):
     customer_list = []
 
     for customer in customer_colln.find({}):
@@ -38,7 +38,12 @@ def get_film_history(film_name):
                 full_name = f"{customer['First Name']} {customer['Last Name']}"
                 customer_list.append(full_name)
 
-    # remove duplicates in customer list
-    return list(set(customer_list))
+    for film in film_colln.find({"Title": film_name}):
+        selected_film = film
 
-print(get_film_history('FIREBALL PHILADELPHIA'))
+    # remove duplicates in customer list
+    selected_film["rental_history"] = list(set(customer_list))
+
+    return selected_film
+
+print(get_film('FIREBALL PHILADELPHIA'))
