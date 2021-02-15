@@ -12,6 +12,11 @@ db = client['dvd-rental-system']
 customer_colln = db.customers
 
 def get_all():
+    """Get all customer data from customer collection in db
+
+    Returns:
+        list: contain customers dicts with full name as key
+    """
     customer_list = []
 
     for customer in customer_colln.find({}):
@@ -21,6 +26,16 @@ def get_all():
     return customer_list
 
 def get_rental_info(first_name, last_name):
+    """Search for the selected film in film collection in db
+
+    Args:
+        first_name (str): First name of the seleceted customer
+        last_name (str): Last name of the seleceted customer
+
+    Returns:
+        list: contain the seleceted customer's all rental data in dicts with
+              film title as key
+    """
     rental_list = []
 
     # search for selected customer's rental info

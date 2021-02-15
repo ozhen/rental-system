@@ -36,6 +36,9 @@ def get_all():
 def get_film(film_name):
     """Search for the selected film in film collection in db
 
+    Args:
+        film_name (str): Name of the seleceted film
+
     Returns:
         dict: contain film rental histroy and other details
     """
