@@ -11,7 +11,7 @@ client = MongoClient('localhost',
 db = client['dvd-rental-system']
 customer_colln = db.customers
 
-def get_all():
+def get_all_customers():
     """Get all customer data from customer collection in db
 
     Returns:
@@ -68,23 +68,3 @@ def get_rental_info(first_name, last_name):
         rental_list.append(rented_movie)
     
     return rental_list
-
-
-# complated
-#print(getAll())
-#print(get_rental_info('MARY', 'SMITH'))
-
-# testing
-
-'''
-# helper functions
-def checkPayments():
-    for customer in customer_colln.find({}):
-        full_name = f"{customer['First Name']} {customer['Last Name']}"
-        rentals = customer['Rentals']
-
-        for rental in rentals:
-            if len(rental['Payments']) > 1:
-                print(f"{full_name} has more than 1 payments")
-#checkPayments()
-'''

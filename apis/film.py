@@ -10,7 +10,7 @@ db = client['dvd-rental-system']
 film_colln = db.films
 customer_colln = db.customers
 
-def get_all():
+def get_all_films():
     """Get all films data from film collection in db
 
     Returns:
@@ -68,6 +68,3 @@ def get_film(film_name):
     selected_film["rental_history"] = list(set(customer_list))
 
     return selected_film
-
-print(get_film('FIREBALL PHILADELPHIA'))
-print(get_film('anime'))

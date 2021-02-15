@@ -18,4 +18,3 @@ def check_payments():
         for rental in rentals:
             if len(rental['Payments']) > 1:
                 print(f"{full_name} has more than 1 payments")
-

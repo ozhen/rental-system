@@ -1,17 +1,11 @@
-from pymongo import MongoClient
+from apis.customer import get_all_customers, get_rental_info
+from apis.film import get_all_films, get_film
 
-client = MongoClient('localhost',
-                      username='root',
-                      password='rootpassword',
-                      authSource='admin',
-                      authMechanism='SCRAM-SHA-256')
+# customers
+print(get_all_customers())
+print(get_rental_info('MARY', 'SMITH'))
 
-db = client['dvd-rental-system']
-
-print(db.list_collection_names())
-
-customer_colln = db.customers
-film_colln = db.films
-
-print(customer_colln.count_documents({}))
-print(film_colln.count_documents({}))
+# films
+print(get_all_films())
+print(get_film('FIREBALL PHILADELPHIA'))
+print(get_film('ONE PIECE'))
