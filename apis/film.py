@@ -28,7 +28,7 @@ def get_all_films():
         # add available film to the film list
         film_dict = { film["Title"]: film_info}
 
-        film_list.append(film_info)
+        film_list.append(film_dict)
 
     return film_list
 
